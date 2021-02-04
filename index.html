@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+        integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ=="
+        crossorigin="anonymous" />
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Quotes</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="inner" data-aos="zoom-in">
+            <div class="box">
+                <p class="number">
+                    <!-- <img src="images/twitter.png" alt="tweetMe" title="TweetMe" id="tweetMe" /> -->
+                    <i class="fab fa-twitter" id="tweetMe"></i>
+                </p>
+                <div class="text">
+                    <i class="start-quote fas fa-quote-left"></i>
+                    <p id="quotes" class="quote"></p>
+                    <p id="author" class="author"></p>
+                </div>
+                <label class="button">
+                    <p id="newQ">New Quotes</p>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+
+        AOS.init();
+        const quotesDB = [
+
+            {
+                text: "I can shake off everything as I write; my sorrows disappear, my courage is reborn.",
+                author: "Anne Frank"
+            },
+
+            {
+                text: "Either write something worth reading or do something worth writing.",
+                author: "Benjamin Franklin"
+            },
+
+            {
+                text: "I kept always two books in my pocket, one to read, one to write in.",
+                author: "Robert Louis Stevenson"
+            },
+
+            {
+                text: "You can make anything by writing.",
+                author: "C.S. Lewis"
+            },
+
+            {
+                text: "A word after a word after a word is power.",
+                author: "Margaret Atwood"
+            },
+
+            {
+                text: "Tears are words that need to be written.",
+                author: "Paulo Coelho"
+            },
+
+            {
+                text: "No one is wise by birth for wisdom results from one own’s efforts.",
+                author: "T. Krishnamacharya"
+            },
+
+            {
+                text: "By plucking her petals, you do not gather the beauty of the flower.",
+                author: "Rabindranath Tagore"
+            },
+
+            {
+                text: "If you are wealthy, be humble.Plants bend when they bear fruit.",
+                author: "Sai Baba"
+            },
+
+            {
+                text: "Wherever you go becomes a part of you somehow.",
+                author: "Anita Desai"
+            },
+
+            {
+                text: "Be so busy improving your self that you have no time to criticize others.",
+                author: "Chetan Bhagat"
+            },
+
+            {
+                text: "Do not blame God for having created the tiger, but thank him for not having given it wings.",
+                author: "Indian proverb"
+            },
+
+            {
+                text: "An autobiography can distort, facts can be realigned.But fiction never lies.It reveals the writer totally.",
+                author: "V. S. Naipaul"
+            },
+
+            {
+                text: "Remember, no one is stopping you from lighting a lamp in a dark night.",
+                author: "Harivansh Rai Bacchan"
+            },
+
+            {
+                text: "To keep your mind and nature cleansed of impurities, make a hut for your critics in your backyard and keep them close.",
+                author: "Kabir"
+            },
+
+            {
+                text: "Don’t limit a child to your own learning, for he was born in another time.",
+                author: "Rabindranath Tagore"
+            },
+
+            {
+                text: "Devotion is that which generates knowledge; knowledge is that which fashions freedom.",
+                author: "Tulsidas"
+            },
+
+            {
+                text: "Be so busy improving your self that you have no time to criticize others.",
+                author: "Chetan Bhagat"
+            },
+
+            {
+                text: "Do not blame God for having created the tiger, but thank him for not having given it wings.",
+                author: "Indian proverb"
+            },
+
+            {
+                text: "An autobiography can distort, facts can be realigned.But fiction never lies.It reveals the writer totally.",
+                author: "V. S. Naipaul"
+            },
+
+            {
+                text: "Remember, no one is stopping you from lighting a lamp in a dark night.",
+                author: "Harivansh Rai Bacchan"
+            },
+
+            {
+                text: "To keep your mind and nature cleansed of impurities, make a hut for your critics in your backyard and keep them close.",
+                author: "Kabir"
+            },
+
+            {
+                text: "What we possess is temporary, but what we become is permanent.",
+                author: "Devdutt Pattanaik"
+            },
+
+            {
+                text: "If you live on the river, befriend the crocodile.",
+                author: "Indian proverb"
+            },
+
+            {
+                text: "Don’t limit a child to your own learning, for he was born in another time.",
+                author: "Rabindranath Tagore"
+            },
+
+            {
+                text: "Devotion is that which generates knowledge; knowledge is that which fashions freedom.",
+                author: "Tulsidas"
+            },
+
+            {
+                text: "Blaming your faults on your nature does not change the nature of your faults.",
+                author: "Indian proverb"
+            },
+
+            {
+                text: "The true measure of spirituality is generosity, as it is indicative of detachment—even to your own   ideas.",
+                author: "Devdutt Pattanaik"
+            },
+
+            {
+                text: "Man needs his difficulties because they are necessary to enjoy success.",
+                author: "A.P.J. Abdul Kalam"
+            },
+
+            {
+                text: "Need is not transitive.One may need without oneself being needed.",
+                author: "Amitav Ghosh"
+            },
+
+            {
+                text: "What is now in the past was once in the future.",
+                author: "Ramachandra Guha"
+            },
+
+            {
+                text: "A coward is incapable of exhibiting love; it is the prerogative of the brave.",
+                author: "Mahatma Gandhi"
+            },
+
+            {
+                text: "The doer must do only when the receiver is ready to receive.Otherwise, the act is wasted.",
+                author: "Khushwant Singh"
+            },
+
+            {
+                text: "Even an emperor is no match for a man with no wants.",
+                author: "Maharishi Raman"
+            },
+
+            {
+                text: "Think of many things.Never place your happiness in one person’s power.Be just to yourself.",
+                author: "Vikram Seth"
+            },
+
+            {
+                text: "Facts are facts and will not disappear on account of your likes.",
+                author: "Jawaharlal Nehru"
+            },
+
+            {
+                text: "I will not let anyone walk through my mind with their dirty feet.",
+                author: "Mahatma Gandhi"
+            },
+
+            {
+                text: "Don’t be serious, be sincere.",
+                author: "Chetan Bhagat"
+            },
+
+            {
+                text: "We can’t change the direction of the wind, but we can adjust the sails.",
+                author: "Indian proverb"
+            },
+
+            {
+                text: "Comfort is no test of truth.Truth is often far from being comfortable.",
+                author: "Swami Vivekananda"
+            },
+
+            {
+                text: "Yoga teaches us to cure what need not be endured and endure what cannot be cured.",
+                author: "B.K.S. Iyengar"
+            },
+
+            {
+                text: "Wherever you are is the entry point.",
+                author: "Kabir"
+            },
+
+            {
+                text: "An ounce of practice is worth a thousand words.",
+                author: "Mahatma Gandhi"
+            },
+
+            {
+                text: "Live as if you were to die tomorrow.Learn as if you were to live forever.",
+                author: "Mahatma Gandhi"
+            },
+
+            {
+                text: "Art is the truth delivered through the medium of beauty.",
+                author: "Mahadevi Verma"
+            },
+
+            {
+                text: "That’s what careless words do.They make people love you a little less.",
+                author: "Arundhati Roy"
+            },
+
+            {
+                text: "Could fulfillment ever be felt as deeply as loss?",
+                author: "Kiran Desai"
+            },
+
+            {
+                text: "The only lies for which we are truly punished are those we tell ourselves.",
+                author: "V. S. Naipaul"
+            },
+
+            {
+                text: "Freedom is not worth having if it does not include the freedom to make mistakes.",
+                author: "Mahatma Gandhi"
+            },
+
+            {
+                text: "Why can’t we control our anger? Because we love perfection.Make a little room for imperfection in our lives.",
+                author: "Sri Sri Ravi Shankar"
+            },
+
+            {
+                text: "Justice is better than admiration.",
+                author: "Indian proverb"
+            },
+
+            {
+                text: "Refusal to accept the flow of the world is the root of all misery.",
+                author: "Devdutt Pattanaik"
+            },
+
+            {
+                text: "The hunger for love is much more difficult to remove than the hunger for bread.",
+                author: "Mother Teresa"
+            },
+
+            {
+                text: "Service that is rendered without joy helps neither the servant nor the served.",
+                author: "Mahatma Gandhi"
+            },
+
+            {
+                text: "I measure the progress of a community by the degree of progress which women have achieved.",
+                author: "B. R. Ambedkar"
+            },
+
+            {
+                text: "You can change friends, but not neighbours.",
+                author: "Atal Bihari Vajpayee"
+            },
+
+            {
+                text: "Having a soft heart in a cruel world is a sign of courage, not weakness.",
+                author: "Baba Bulleh Shah"
+            }
+        ];
+
+
+        const quotes = document.getElementById("quotes");
+        const author = document.getElementById("author");
+        const newQ = document.getElementById("newQ");
+        const tweetMe = document.getElementById("tweetMe")
+        let data = "";
+        let quotesData = "";
+
+        const tweetNow = () => {
+            let tweetPost = `https://twitter.com/intent/tweet?text=${quotesData.text} ${quotesData.author}`;
+            window.open(tweetPost);
+        };
+
+        const getNewQuotes = () => {
+            let ranNum = Math.floor(Math.random() * quotesDB.length);
+            quotesData = quotesDB[ranNum];
+            quotes.innerText = `${quotesData.text}`;
+            quotesData.author === null
+                ? (author.innerText = "unKnown")
+                : (author.innerText = `${quotesData.author}`);
+        };
+
+        const getQuotes = async () => {
+            const newQuotes = quotesDB;
+            try {
+                let data = newQuotes;
+                getNewQuotes();
+            } catch (error) { }
+        };
+        tweetMe.addEventListener('click', tweetNow);
+        newQ.addEventListener('click', getNewQuotes);
+        getQuotes();
+
+    </script>
+
+</body>
+
+</html>
