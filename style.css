@@ -152,3 +152,25 @@ input{
     background: var(--main-color);
     cursor: pointer;
 }
+
+
+@media (max-width: 768px){
+    #quotes{
+        font-size: 0.8rem;
+    }
+}
+
+@media (min-width: 321px) and (max-width: 767px){
+    #quotes{
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 320px){
+    #quotes{
+        font-size: 0.5rem;
+    }
+    .author{
+        font-size: 0.6rem;
+    }
+}
