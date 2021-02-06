@@ -154,23 +154,29 @@ input{
 }
 
 
-@media (max-width: 768px){
-    #quotes{
-        font-size: 0.8rem;
-    }
-}
-
 @media (min-width: 321px) and (max-width: 767px){
-    #quotes{
+    /* #quotes{
         font-size: 0.7rem;
+    } */
+    .container{
+        width: 100%;
+    }
+    .inner{
+        width: 100%;
     }
 }
 
 @media (max-width: 320px){
-    #quotes{
+    /* #quotes{
         font-size: 0.5rem;
-    }
-    .author{
+    } */
+    /* .author{
         font-size: 0.6rem;
+    } */
+    .container{
+        width: 100%;
     }
-}
+    .inner{
+        width: 100%;
+    }
+} 
